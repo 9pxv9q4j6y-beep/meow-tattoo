@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#13090d" />
+  <meta name="description" content="MEOW TATTOO — татуировки, пирсинг, свободные эскизы и атмосфера без осуждения. Архангельск, Поморская 22, ТЦ Арбат. Запись к Элине, Карине, Ксении." />
+  <title>Meow Tattoo — войди в студию</title>
+  <link rel="preload" href="assets/studio-bg.webp" as="image" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a href="#studio" class="brand" aria-label="Meow Tattoo — на главную">
+      <span class="brand-mark">✦</span>
+      <span class="brand-title">Meow <em>Tattoo</em></span>
+    </a>
+    <div class="header-right">
+      <span class="online-dot" aria-hidden="true"></span>
+      <span class="header-subtitle">Архангельск · Поморская, 22</span>
+      <button class="top-link" data-open="contacts">Записаться <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+
+  <main id="studio">
+    <section class="intro" aria-label="Приветствие">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> WELCOME TO OUR ROOM <span class="eyebrow-line"></span></div>
+        <h1>Заходи, <i>тут свои.</i></h1>
+        <p>Мы делаем татуировки, пирсинг и место, где можно быть собой. Открывай папки, листай скетчбук и не забудь погладить кошечку.</p>
+      </div>
+      <div class="intro-side"><span class="asterisk">✳</span><span>EXPLORE THE ROOM<br />01 / THE STUDIO</span></div>
+    </section>
+
+    <div class="scene-topline">
+      <div class="explore-label"><span class="live-circle"></span> Исследовать студию <span class="separator">/</span> <span class="muted">кликабельные объекты</span></div>
+      <button class="hints-toggle" id="hintsToggle" aria-pressed="true">✧ Подсказки: вкл.</button>
+    </div>
+
+    <div class="mobile-view-tools" aria-label="Управление видом комнаты">
+      <span class="mobile-view-title">✦ Комната целиком</span>
+      <button id="zoomToggle" class="mobile-zoom-toggle" type="button" aria-pressed="false">Увеличить комнату ⤢</button>
+    </div>
+
+    <section class="scene-viewport" id="sceneViewport" aria-label="Интерактивная иллюстрация тату-студии; на телефоне показана вся комната; нажмите «Увеличить комнату», чтобы рассмотреть детали">
+      <div class="scene" id="scene">
+        <img class="scene-art" src="assets/studio-bg.webp" alt="Тёмная уютная тату-студия с красными лампами, тату-креслом, диваном, альбомом эскизов, девушкой с планшетом и вывеской Meow Tattoo" draggable="false" />
+        <span class="scene-vignette" aria-hidden="true"></span>
+
+        <button class="hotspot hotspot-chair" type="button" data-open="prices" data-tooltip="Прайс" aria-label="Открыть прайс, нажав на тату-кресло"></button>
+        <button class="hotspot hotspot-door" type="button" data-open="contacts" data-tooltip="Контакты" aria-label="Открыть адрес и контакты, нажав на дверь"></button>
+        <button class="hotspot hotspot-sign" type="button" data-open="about" data-tooltip="О студии" aria-label="Узнать о Meow Tattoo, нажав на вывеску"></button>
+        <button class="hotspot hotspot-book" type="button" data-open="flash" data-tooltip="Свободные эскизы" aria-label="Открыть каталог эскизов, нажав на альбом"></button>
+
+        <div class="master-station" aria-label="Папки мастеров">
+          <div class="master-caption"><span>⌁</span> КАРТОТЕКА МАСТЕРОВ <span>⌁</span></div>
+          <div class="master-folders">
+            <button class="folder-button" data-master="Элина" type="button" aria-label="Открыть папку Элины">
+              <span class="folder-icon" aria-hidden="true"><span></span></span>
+              <span>Элина</span>
+            </button>
+            <button class="folder-button" data-master="Карина" type="button" aria-label="Открыть папку Карины">
+              <span class="folder-icon" aria-hidden="true"><span></span></span>
+              <span>Карина</span>
+            </button>
+            <button class="folder-button" data-master="Ксения" type="button" aria-label="Открыть папку Ксении">
+              <span class="folder-icon" aria-hidden="true"><span></span></span>
+              <span>Ксения</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="cat-button" id="catButton" aria-label="Погладить белую кошечку: она переместится в другое место" type="button">
+          <img id="catImage" src="assets/cat-desk.webp" alt="Белая кошечка с небольшими пятнышками на голове, без ошейника" draggable="false" />
+          <span class="cat-hearts" aria-hidden="true">♡ ♡</span>
+        </button>
+        <div class="cat-toast" id="catToast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <div class="scene-bottomline">
+      <span><span class="interactive-star">✳</span> Наведи или нажми на предмет</span>
+      <span class="mobile-note" id="sceneMobileNote">Нажми на ✦ или выбери раздел ниже</span>
+      <span>MEOW TATTOO © <span id="year"></span></span>
+    </div>
+
+
+    <section class="mobile-hub" aria-label="Удобная навигация на телефоне">
+      <div class="mobile-hub-heading">
+        <span class="section-label">01 / НАШИ МАСТЕРА</span>
+        <h2>Три мастера. <em>Три характера.</em></h2>
+        <p>Каждая папка — своя история, портфолио и способ записаться.</p>
+      </div>
+      <div class="mobile-master-cards">
+        <button class="mobile-master-card" type="button" data-master="Элина"><img src="assets/portrait-elina.webp" alt="Элина — тату и пирсинг" loading="lazy"><span class="card-overlay"><small>TATTOO · PIERCING · TAROT</small><span class="mobile-master-name">Элина</span><span class="mobile-master-action">Открыть папку ↗</span></span></button>
+        <button class="mobile-master-card" type="button" data-master="Карина"><img src="assets/portrait-karina.webp" alt="Карина — тату и пирсинг" loading="lazy"><span class="card-overlay"><small>TATTOO · PIERCING</small><span class="mobile-master-name">Карина</span><span class="mobile-master-action">Открыть папку ↗</span></span></button>
+        <button class="mobile-master-card" type="button" data-master="Ксения"><img src="assets/portrait-ksenia.webp" alt="Ксения — тату" loading="lazy"><span class="card-overlay"><small>TATTOO · FLASH BOOK</small><span class="mobile-master-name">Ксения</span><span class="mobile-master-action">Открыть папку ↗</span></span></button>
+      </div>
+      <div class="mobile-cat-card">
+        <div class="mobile-cat-picture"><img src="assets/cat-sofa.webp" alt="Белая кошечка с пятнышками на голове, без ошейника" loading="lazy"></div>
+        <div class="mobile-cat-text"><span class="section-label">МАЛЕНЬКИЙ СЕКРЕТ</span><strong>А где кошечка?</strong><p id="mobileCatStatus" role="status" aria-live="polite">Нажми и посмотри, куда она перебежит.</p></div>
+        <button class="mobile-pet-button" type="button" id="mobilePetCat" aria-label="Погладить кошечку и переместить её">Погладить ♡</button>
+      </div>
+    </section>
+
+    <section class="discover" aria-label="Быстрые разделы">
+      <div class="discover-title"><span>Если не хочется искать предметы</span><h2>Здесь всё под рукой.</h2></div>
+      <div class="quick-links">
+        <button data-open="flash"><span class="quick-icon">✿</span><span>Эскизы</span><span>↗</span></button>
+        <button data-open="prices"><span class="quick-icon">✧</span><span>Прайс</span><span>↗</span></button>
+        <button data-open="piercing"><span class="quick-icon">✦</span><span>Пирсинг</span><span>↗</span></button>
+        <button data-open="tarot"><span class="quick-icon">☾</span><span>Таро Элины</span><span>↗</span></button>
+        <button data-open="contacts"><span class="quick-icon">⌂</span><span>Контакты</span><span>↗</span></button>
+        <button data-open="about"><span class="quick-icon">♡</span><span>О нас</span><span>↗</span></button>
+      </div>
+      <p class="demo-notice">Работаем по предварительной записи · с 16 лет (в 16–17 лет нужно письменное разрешение родителей). <button class="text-link" type="button" data-open="rules">Условия записи ↗</button></p>
+    </section>
+  </main>
+
+  <dialog class="content-dialog" id="contentDialog" aria-labelledby="modalTitle">
+    <div class="dialog-shell">
+      <div class="dialog-top"><span class="dialog-kicker">MEOW TATTOO / <span id="dialogPath">STUDIO</span></span><button class="close-dialog" id="closeDialog" type="button" aria-label="Закрыть окно">✕</button></div>
+      <div class="dialog-body" id="dialogBody"></div>
+      <div class="dialog-footer"><span>✦ Сделано с любовью к деталям</span><span>MEOW // STUDIO</span></div>
+    </div>
+  </dialog>
+  <dialog id="lightbox" class="lightbox" aria-label="Просмотр изображения"><div class="lightbox-inner"><button class="lightbox-close" type="button" id="closeLightbox" aria-label="Закрыть фотографию">✕</button><img id="lightboxImage" alt="Изображение в увеличенном виде"><p id="lightboxCaption"></p></div></dialog>
+</body>
+</html>
